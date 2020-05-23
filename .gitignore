@@ -3,6 +3,6 @@
 
 venv/
 
-webapp/__pycache__/
+__pycache__/
 
-polls/__pycache__/
+*.sqlite3
