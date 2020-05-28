@@ -32,4 +32,6 @@ jobs:
         SECRET_KEY: secret
       run: python manage.py migrate
     - name: Run Tests
+      env:
+        SECRET_KEY: secret
       run: python manage.py test
