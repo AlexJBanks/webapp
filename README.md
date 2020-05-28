@@ -1,3 +1,5 @@
+![Django Tests](https://github.com/AlexJBanks/webapp/workflows/Django%20Tests/badge.svg)
+
 # webapp
 Originally created as a bridging coursework for Computer Science degree. Extended to become online personal portfolio and a place to experiement with web tools
 
