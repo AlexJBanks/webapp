@@ -2,7 +2,9 @@ name: Django Tests
 
 on:
   push:
-    branches: [ master, blog ]
+    branches: 
+    - master
+    - blog
   pull_request:
     branches: [ master ]
 
