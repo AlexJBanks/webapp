@@ -24,6 +24,7 @@ try:
     with open('secret_key.txt') as f:
         SECRET_KEY = f.read().strip()
 except FileNotFoundError:
+    print(os.environ)
     SECRET_KEY = os.environ['SECRET_KEY']
 
 
