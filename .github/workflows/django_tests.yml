@@ -18,10 +18,6 @@ jobs:
         python-version: [3.6, 3.7, 3.8]
 
     steps:
-    - name: test
-      run: echo Hello world $SECRET_KEY
-      env:
-        SECRET_KEY: secret
     - uses: actions/checkout@v2
     - name: Set up Python ${{ matrix.python-version }}
       uses: actions/setup-python@v1
@@ -34,8 +30,6 @@ jobs:
     - name: Run Migrations
       env:
         SECRET_KEY: secret
-      run: |
-        python manage.py migrate
+      run: python manage.py migrate
     - name: Run Tests
-      run: |
-        python manage.py test
+      run: python manage.py test
