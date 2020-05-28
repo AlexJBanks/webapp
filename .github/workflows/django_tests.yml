@@ -2,7 +2,9 @@ name: Django Tests
 
 on:
   push:
-    branches: [ master, blog ]
+    branches: 
+    - master
+    - blog
   pull_request:
     branches: [ master ]
 
@@ -26,8 +28,10 @@ jobs:
         python -m pip install --upgrade pip
         pip install -r requirements.txt
     - name: Run Migrations
-      run: |
-        python manage.py migrate
+      env:
+        SECRET_KEY: secret
+      run: python manage.py migrate
     - name: Run Tests
-      run: |
-        python manage.py test
+      env:
+        SECRET_KEY: secret
+      run: python manage.py test
