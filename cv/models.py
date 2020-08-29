@@ -29,3 +29,14 @@ class WorkExperience(models.Model):
     end_date = models.DateTimeField(blank=True, null=True)
     ongoing = models.BooleanField(default=False)
     description = models.TextField()
+
+    def __str__(self):
+        return self.job_title
+
+
+class Basics(models.Model):
+    type = models.CharField(max_length=200)
+    data = models.CharField(max_length=200)
+
+    def __str__(self):
+        return self.type
