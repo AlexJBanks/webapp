@@ -30,15 +30,16 @@ h1, h2, h3, h4 {
     width: 100%;
 }
 
-.top-menu, .top-menu:hover, .top-menu:visited {
-    color: #ffffff;
+.float_action, .float_action:hover, .float_action:visited {
+    color: #434343;
     float: right;
     font-size: 26pt;
     margin-right: 20px;
 }
 
 .data {
-    margin-bottom: 70px;
+    margin-bottom: 30px;
+    margin-left: 30px;
 }
 
 .data h2 a, .data h2 a:visited {

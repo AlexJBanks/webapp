@@ -55,4 +55,10 @@ class CVViewTests(TestCase):
         self.assertRegex(response, r'\+?[\d|\ ]{10,}\d', msg="CV does not contain phone number")
         self.assertRegex(response, r'\w+.*\@(\w+.*\.\w+.*)', msg="CV does not contain email address")
 
-#TODO tests for adding from form
+
+class CVBasicsFormTest(TestCase):
+    def test_form_exists(self):
+        url = reverse('basic_new')
+        response = self.client.get(url)
+        self.assertNotEqual(response.status_code, 404)
+        self.assertEqual(response.status_code, 200)

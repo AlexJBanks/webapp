@@ -34,7 +34,7 @@ class WorkExperience(models.Model):
         return self.job_title
 
 
-class Basics(models.Model):
+class Basic(models.Model):
     type = models.CharField(max_length=200)
     data = models.CharField(max_length=200)
 
