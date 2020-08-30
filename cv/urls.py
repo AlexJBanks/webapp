@@ -10,4 +10,6 @@ urlpatterns = [
     path('education/new/', views.education_new, name='education_new'),
     path('work/<int:pk>/', views.work_edit, name='work_edit'),
     path('work/new/', views.work_new, name='work_new'),
+    path('education/<int:epk>/grade/<int:gpk>/', views.grade_edit, name='grade_edit'),
+    path('education/<int:epk>/grade/new/', views.grade_new, name='grade_new'),
 ]

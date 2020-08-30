@@ -1,14 +1,15 @@
 from django.shortcuts import render, get_object_or_404, redirect
 
-from cv.forms import BasicForm, EducationForm, WorkForm
-from cv.models import Basic, Education, Work
+from cv.forms import BasicForm, EducationForm, WorkForm, GradeForm
+from cv.models import Basic, Education, Work, Grade
 
 
 def cv_list(request):
     basic = Basic.objects.order_by('id')
     education = Education.objects.order_by('id')
     work = Work.objects.order_by('id')
-    return render(request, 'cv/cv_list.html', {'basic': basic, 'education': education, 'work': work})
+    grade = Grade.objects.order_by('id')
+    return render(request, 'cv/cv_list.html', {'basic': basic, 'education': education, 'work': work, 'grade': grade})
 
 
 def basic_edit(request, pk):
@@ -84,3 +85,30 @@ def work_new(request):
     else:
         form = WorkForm()
     return render(request, 'cv/form_edit.html', {'form': form, 'title': 'Experience'})
+
+
+def grade_edit(request, epk, gpk):
+    grade = get_object_or_404(Grade, pk=gpk)
+    if request.method == "POST":
+        form = GradeForm(request.POST, instance=grade)
+        if form.is_valid():
+            grade = form.save(commit=False)
+            grade.education=Education.objects.get(pk=epk)
+            grade.save()
+            return redirect('cv')
+    else:
+        form = GradeForm(instance=grade)
+    return render(request, 'cv/form_edit.html', {'form': form, 'title': 'grade'})
+
+
+def grade_new(request,epk):
+    if request.method == "POST":
+        form = GradeForm(request.POST)
+        if form.is_valid():
+            grade = form.save(commit=False)
+            grade.education=Education.objects.get(pk=epk)
+            grade.save()
+            return redirect('cv')
+    else:
+        form = GradeForm()
+    return render(request, 'cv/form_edit.html', {'form': form, 'title': 'grade'})

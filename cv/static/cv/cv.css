@@ -33,7 +33,7 @@ h1, h2, h3, h4 {
 .float_action, .float_action:hover, .float_action:visited {
     color: #434343;
     float: right;
-    font-size: 26pt;
+    font-size: 22pt;
     margin-right: 20px;
 }
 
@@ -48,4 +48,12 @@ h1, h2, h3, h4 {
 
 .section {
     margin-top: 50px;
+}
+
+.grades {
+    margin-left: 30px;
+}
+
+.grades td {
+    padding: 5px;
 }

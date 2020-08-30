@@ -78,3 +78,11 @@ class CVEducationFormTest(TestCase):
         response = self.client.get(url)
         self.assertNotEqual(response.status_code, 404)
         self.assertEqual(response.status_code, 200)
+
+
+class CVGradeFormTest(TestCase):
+    def test_form_exists(self):
+        url = reverse('grade_new', args=[1])
+        response = self.client.get(url)
+        self.assertNotEqual(response.status_code, 404)
+        self.assertEqual(response.status_code, 200)
