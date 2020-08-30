@@ -45,3 +45,7 @@ h1, h2, h3, h4 {
 .data h2 a, .data h2 a:visited {
     color: #000000;
 }
+
+.section {
+    margin-top: 50px;
+}

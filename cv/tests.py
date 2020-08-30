@@ -1,7 +1,7 @@
 from django.test import TestCase
 from django.urls import reverse
 
-from cv.models import Education, Grade, WorkExperience
+from cv.models import Education, Grade, Work
 
 
 class CVNavigationTests(TestCase):
@@ -35,7 +35,7 @@ class EducationModelTests(TestCase):
         self.assertIsNotNone(g)
 
     def test_work_exp_exists(self):
-        w = WorkExperience()
+        w = Work()
         self.assertIsNotNone(w)
 
 
@@ -56,9 +56,25 @@ class CVViewTests(TestCase):
         self.assertRegex(response, r'\w+.*\@(\w+.*\.\w+.*)', msg="CV does not contain email address")
 
 
-class CVBasicsFormTest(TestCase):
+class CVBasicFormTest(TestCase):
     def test_form_exists(self):
         url = reverse('basic_new')
+        response = self.client.get(url)
+        self.assertNotEqual(response.status_code, 404)
+        self.assertEqual(response.status_code, 200)
+
+
+class CVWorkFormTest(TestCase):
+    def test_form_exists(self):
+        url = reverse('work_new')
+        response = self.client.get(url)
+        self.assertNotEqual(response.status_code, 404)
+        self.assertEqual(response.status_code, 200)
+
+
+class CVEducationFormTest(TestCase):
+    def test_form_exists(self):
+        url = reverse('education_new')
         response = self.client.get(url)
         self.assertNotEqual(response.status_code, 404)
         self.assertEqual(response.status_code, 200)
