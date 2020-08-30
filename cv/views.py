@@ -1,3 +1,4 @@
+from django.db.models import F
 from django.shortcuts import render, get_object_or_404, redirect
 
 from cv.forms import BasicForm, EducationForm, WorkForm, GradeForm
@@ -6,9 +7,9 @@ from cv.models import Basic, Education, Work, Grade
 
 def cv_list(request):
     basic = Basic.objects.order_by('id')
-    education = Education.objects.order_by('id')
-    work = Work.objects.order_by('id')
-    grade = Grade.objects.order_by('id')
+    education = Education.objects.order_by(F('end_date').desc(nulls_first=True))
+    work = Work.objects.order_by(F('end_date').desc(nulls_first=True))
+    grade = Grade.objects.order_by(F('date').desc(nulls_first=True))
     return render(request, 'cv/cv_list.html', {'basic': basic, 'education': education, 'work': work, 'grade': grade})
 
 

@@ -34,14 +34,14 @@
                 {%  if user.is_authenticated %}
                     <a href="{% url 'grade_new' epk=e.pk %}" class="float_action"><span class="glyphicon glyphicon-plus"></span></a>
                 {% endif %}
-                <h5>Grades</h5>
                 <table class="grades">
+                    <td><th>Grades</th></td>
                     {% for g in grade %}
                         {% if g.education == e %}
                             <tr>
                                 <td>{{ g.name }}</td>
                                 <td>{{ g.grade }}</td>
-                                <td>{{ g.date|date:"d M y"}}</td>
+                                <td>{{ g.date|date:"M y"}}</td>
                                 <td><a href="{% url 'grade_edit' epk=e.pk gpk=g.pk %}"><span class="glyphicon glyphicon-pencil"></span></a></td>
                             </tr>
                         {% endif %}
