@@ -47,14 +47,6 @@ class CVViewTests(TestCase):
         self.assertContains(response, "Work", msg_prefix="Work section not visible")
         self.assertContains(response, "Education", msg_prefix="Education section not visible")
 
-    def test_basics_visible(self):
-        #TODO Selenium
-        url = reverse('cv')
-        response = self.client.get(url)
-        self.assertContains(response, "Name")
-        self.assertRegex(response, r'\+?[\d|\ ]{10,}\d', msg="CV does not contain phone number")
-        self.assertRegex(response, r'\w+.*\@(\w+.*\.\w+.*)', msg="CV does not contain email address")
-
 
 class CVBasicFormTest(TestCase):
     def test_form_exists(self):
