@@ -94,7 +94,7 @@ def grade_edit(request, epk, gpk):
         form = GradeForm(request.POST, instance=grade)
         if form.is_valid():
             grade = form.save(commit=False)
-            grade.education=Education.objects.get(pk=epk)
+            grade.education = Education.objects.get(pk=epk)
             grade.save()
             return redirect('cv')
     else:
@@ -102,12 +102,12 @@ def grade_edit(request, epk, gpk):
     return render(request, 'cv/form_edit.html', {'form': form, 'title': 'grade'})
 
 
-def grade_new(request,epk):
+def grade_new(request, epk):
     if request.method == "POST":
         form = GradeForm(request.POST)
         if form.is_valid():
             grade = form.save(commit=False)
-            grade.education=Education.objects.get(pk=epk)
+            grade.education = Education.objects.get(pk=epk)
             grade.save()
             return redirect('cv')
     else:

@@ -6,4 +6,3 @@ admin.site.register(Basic)
 admin.site.register(Education)
 admin.site.register(Grade)
 admin.site.register(Work)
-

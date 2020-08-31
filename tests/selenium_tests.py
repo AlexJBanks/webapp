@@ -1,18 +1,16 @@
-import time
-
 import regex as regex
 from selenium import webdriver
 from unittest import TestCase
 
 options = webdriver.ChromeOptions()
 options.binary_location = "C:/Program Files (x86)/Google/Chrome Beta/Application/chrome.exe"
-chromedriver_binary = "chromedriver.exe"
+chromedriver_binary = "../chromedriver.exe"
 
 
-class NewVisitorTest(TestCase):
+class BasicTest(TestCase):
 
     def setUp(self):
-        self.browser = webdriver.Chrome(chromedriver_binary, chrome_options=options)
+        self.browser = webdriver.Chrome(chromedriver_binary, options=options)
 
     def tearDown(self):
         self.browser.quit()
