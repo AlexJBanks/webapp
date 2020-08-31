@@ -42,7 +42,9 @@
                                 <td>{{ g.name }}</td>
                                 <td>{{ g.grade }}</td>
                                 <td>{{ g.date|date:"M y"}}</td>
-                                <td><a href="{% url 'grade_edit' epk=e.pk gpk=g.pk %}"><span class="glyphicon glyphicon-pencil"></span></a></td>
+                                {%  if user.is_authenticated %}
+                                    <td><a href="{% url 'grade_edit' epk=e.pk gpk=g.pk %}"><span class="glyphicon glyphicon-pencil"></span></a></td>
+                                {% endif %}
                             </tr>
                         {% endif %}
                     {% endfor %}
